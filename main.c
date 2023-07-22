@@ -3,7 +3,7 @@
 
 int main()
 {
-	int len_1, len_2;
+	int len, len2;
 
 	len = _printf("Percent:[%%]\n");
 	len2 = printf("Percent:[%%]\n");
