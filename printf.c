@@ -17,11 +17,7 @@ int get_specifier(char c, va_list input)
 		len += _puts(va_arg(input, char *));
 	else if (c == '%')
 		len += _putchar('%');
-	else
-	{
-		len += _putchar('%');
-		len += _putchar(c);
-	}
+	
 	return (len);
 }
 /**
