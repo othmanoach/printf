@@ -4,14 +4,15 @@
 *
 * @str: pointer to the string to print
 *
-* Return: void
+* Return: returns 0 on success
 */
 
-void _puts(char *str)
+int _puts(char *str)
 {
 	while (*str)
 	{
 		_putchar(*str++);
 	}
 	_putchar('\n');
+	return (0);
 }
