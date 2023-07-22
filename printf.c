@@ -24,6 +24,7 @@ int helper_func(char specifier, va_list input)
 	}
 	return (len);
 }
+
 /**
  * _printf - prints anything
  * @format: list of argument types passed to the function
