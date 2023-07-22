@@ -9,9 +9,12 @@
 
 int _puts(char *str)
 {
+	int strLen = 0;
+
 	while (*str)
 	{
 		_putchar(*str++);
+		strLen++;
 	}
-	return (0);
+	return (strLen);
 }
