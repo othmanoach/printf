@@ -3,12 +3,12 @@
 
 int main()
 {
-    int len_1, len_2;
+	int len_1, len_2;
 
-    len_1 = printf("Expected output:    %%%%%%\n");
-    len_2 = _printf("Current output:     %%%%%%\n");
-    printf("Expected length:    [%d]\n", len_1);
-    printf("Current length:     [%d]\n", len_2);
+	len = _printf("Percent:[%%]\n");
+	len2 = printf("Percent:[%%]\n");
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n", len2);
 
-    return (0);
+	return (0);
 }
