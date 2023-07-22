@@ -1,8 +1,10 @@
 #include "main.h"
+#include <stdarg.h>
+#include <stddef.h>
 
 /**
  * helper_func - helper function for _printf
- * @format: format specifier
+ * @specifier: format specifier
  * @input: input list
  * Return: number of characters printed
  */
@@ -22,10 +24,14 @@ int helper_func(char specifier, va_list input)
 	{
 		len += _puts(va_arg(input, char *)); /* if format is %s print string */
 	}
-	return (len);
-}
+	else
+	{
+		len += _putchar('%'); /* print the '%' character itself */
+		len += _putchar(specifier); /* print the unrecognized format specifier */
+	}
 
-void print_buffer(char buffer[], int *buff_ind);
+	return len;
+}
 
 /**
  * _printf - prints anything
@@ -36,7 +42,6 @@ int _printf(const char *format, ...)
 {
 	int i = 0, len = 0;
 	va_list input;
-
 
 	if (!format || (format[0] == '%' && !format[1]))
 		return (-1); /* if format is null or if format is % return -1 */
@@ -50,7 +55,7 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			len =+ helper_func(format[i], input);
+			len += helper_func(format[i], input);
 		}
 		else
 		{
@@ -58,18 +63,7 @@ int _printf(const char *format, ...)
 		}
 		i++;
 	}
+
 	va_end(input);
 	return (len);
-}
-/**
- * print_buffer - Prints the contents of the buffer if it exist
- * @buffer: Array of chars
- * @buff_ind: Index at which to add next char, represents the length.
- */
-void print_buffer(char buffer[], int *buff_ind)
-{
-	if (*buff_ind > 0)
-		write(1, &buffer[0], *buff_ind);
-
-	*buff_ind = 0;
 }
