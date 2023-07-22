@@ -11,9 +11,9 @@ int _printf(const char *format, ...)
 
 
 	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
+		return (-1); /* if format is null or if format is % return -1 */
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
+		return (-1); /* if format is % return -1 */
 
 	va_start(input, format);
 
@@ -24,20 +24,20 @@ int _printf(const char *format, ...)
 			i++;
 			if (format[i] == '%')
 			{
-				len += _putchar('%');
+				len += _putchar('%'); /* if format is %% print % */
 			}
 			else if (format[i] == 'c')
 			{
-				len += _putchar(va_arg(input, int));
+				len += _putchar(va_arg(input, int)); /* if format is %c print char */
 			}
 			else if (format[i] == 's')
 			{
-				len += _puts(va_arg(input, char *));
+				len += _puts(va_arg(input, char *)); /* if format is %s print string */
 			}
 		}
 		else
 		{
-			len += _putchar(format[i]);
+			len += _putchar(format[i]); /* if format is not % print char */
 		}
 		i++;
 	}
