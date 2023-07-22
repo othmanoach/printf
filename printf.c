@@ -1,33 +1,12 @@
 #include "main.h"
 /**
- * get_specifier - gets the specifier
- * @format: list of argument types passed to the function
- * @input: list of arguments passed to the function
- * @i: pointer to the index of format
- * @len: pointer to the number of characters printed
- * Return: void
- */
-int get_specifier(char c, va_list input)
-{
-	int len = 0;
-
-	if (c == 'c')
-		len += _putchar(va_arg(input, int));
-	else if (c == 's')
-		len += _puts(va_arg(input, char *));
-	else if (c == '%')
-		len += _putchar('%');
-	
-	return (len);
-}
-/**
  * _printf - prints anything
  * @format: list of argument types passed to the function
  * Return: number of characters printed
  */
 int _printf(const char *format, ...)
 {
-	int i = 0 , len = 0;
+	int i = 0, len = 0;
 	va_list input;
 
 
@@ -43,7 +22,18 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			get_specifier(format[i], input);
+			if (format[i] == '%')
+			{
+				len += _putchar('%'); /* if format is %% print % */
+			}
+			else if (format[i] == 'c')
+			{
+				len += _putchar(va_arg(input, int)); /* if format is %c print char */
+			}
+			else if (format[i] == 's')
+			{
+				len += _puts(va_arg(input, char *)); /* if format is %s print string */
+			}
 		}
 		else
 		{
