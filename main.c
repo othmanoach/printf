@@ -3,11 +3,16 @@
 
 int main()
 {
-	int len = 0, len2 = 0;
+    int len_1, len_2;
 
-	len = _printf("Percent:[%%]\n");
-	len2 = printf("Percent:[%%]\n");
-	_printf("Len:[%d]\n", len);
-	printf("Len:[%d]\n", len2);
-	return (0);
+    len_1 = printf("Expected output:    %%%%%%\n");
+    len_2 = _printf("Current output:     %%%%%%\n");
+    printf("Expected length:    [%d]\n", len_1);
+    printf("Current length:     [%d]\n", len_2);
+    _printf("Character:[%c]\n", 'H');
+    printf("Character:[%c]\n", 'H');
+    _printf("String:[%s]\n", "I am a string !");
+    printf("String:[%s]\n", "I am a string !");
+
+    return (0);
 }
