@@ -23,15 +23,15 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == "%")
+			if (format[i] == '%')
 			{
 				len += _putchar('%');
 			}
-			else if (format[i] == "c")
+			else if (format[i] == 'c')
 			{
 				len += _putchar(va_arg(input, int));
 			}
-			else if (format[i] == "s")
+			else if (format[i] == 's')
 			{
 				len += _puts(va_arg(input, char *));
 			}
