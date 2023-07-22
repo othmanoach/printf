@@ -1,4 +1,8 @@
+#include <stdio.h>
+#include <stdargs.h>
+#include <stdlib.h>
 #include "main.h"
+#include <unistd.h>
 
 /**
  * helper_func - helper function for _printf
