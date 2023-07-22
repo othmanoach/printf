@@ -35,12 +35,12 @@ int _printf(const char *format, ...)
 			{
 				len += _puts(va_arg(input, char *));
 			}
-
 		}
 		else
 		{
 			len += _putchar(format[i]);
 		}
+		i++;
 	}
 	va_end(input);
 	return (len);
