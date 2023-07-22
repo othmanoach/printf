@@ -20,7 +20,6 @@ int print_hex_l(unsigned long int n);
 int print_mem_address(void *ptr);
 int print_rev(char *s);
 int rot13(char *s);
-int flags(/*to be determinated*/);
 
 
 #endif
