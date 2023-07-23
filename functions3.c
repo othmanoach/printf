@@ -40,7 +40,6 @@ int print_hex_l(unsigned long int n)
 int print_unprintable(char *str)
 {
 	int i = 0, len = 0;
-	char hex[3];
 
 	while (str[i])
 	{
@@ -54,7 +53,7 @@ int print_unprintable(char *str)
 				len++;
 			}
 			len += 2;
-			len += print_hex_l(str[i]);
+			len += print_HEX(str[i]);
 		}
 		else
 		{
