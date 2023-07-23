@@ -39,6 +39,11 @@ int helper_func(char specifier, va_list input)
 		num = va_arg(input, unsigned int);
 		len += print_octal(num); /* Handle %o directly within _printf */
 	}
+	else if (specifier == 'x' || specifier == 'X')
+	{
+		num = va_arg(input, unsigned int);
+		len += print_hex(num, specifier == 'X'); /* Handle %x or %X directly within _printf */
+	}
 	else if (specifier == 'b')
 	{
 		len += print_bin(va_arg(input, unsigned int)); /* if format is %b print binary */
