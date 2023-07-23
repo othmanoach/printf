@@ -35,6 +35,8 @@ int helper_func(char specifier, va_list input)
 		len += print_unprintable(va_arg(input, char *));
 	else if (specifier == 'R')
 		len += rot13(va_arg(input, char *));
+	else if (specifier == 'r')
+		len += print_rev(va_arg(input, char *));
 	else
 	{
 		len += _putchar('%'); /* print the '%' character itself */

@@ -97,3 +97,23 @@ int rot13(char *s)
 	}
 	return (len);
 }
+/**
+ * print_rev - prints a string in reverse
+ * @s: string to print
+ * Return: number of characters printed
+ */
+int print_rev(char *s)
+{
+	int i = 0, len = 0;
+
+	while (s[i])
+		i++;
+	i--;
+	while (i >= 0)
+	{
+		_putchar(s[i]);
+		len++;
+		i--;
+	}
+	return (len);
+}
