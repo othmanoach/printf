@@ -41,7 +41,6 @@ int print_unsigned_int(unsigned int n)
 /**
  * print_hex - prints an unsigned integer in hexadecimal format
  * @n: The unsigned integer to print
- * @uppercase: Whether to use uppercase letters (X) or lowercase (x)
  * Return: The number of characters printed
  */
 int print_hex(unsigned int n)

@@ -79,45 +79,17 @@ int print_bin(unsigned int n)
 	return (count);
 }
 /**
- * print_mem_address - Prints an address in hexadecimal format
- * @args: The va_list containing the address to be printed
- * Return: The number of characters printed
+ * print_mem_address - prints a memory address
+ * @addr: address to be printed
+ * Return: number of digits printed
  */
 int print_mem_address(void *addr)
 {
 	if (!addr)
 	{
-		return _puts("(nil)");
+		return (_puts("(nil)"));
 	}
 
 	_puts("0x");
-	return print_hex_l((unsigned long int)addr) + 2; /* +2 for 0x */
-}
-/**
- * print_hex_l - convert decimal to hexadecimal with lowercase
- * @n: The unsigned long int to print
- * Return: The number of characters printed
- */
-int print_hex_l(unsigned long int n)
-{
-	int len = 0;
-	char hex[17]; /* Maximum hexadecimal digits for unsigned long int */
-	char *hex_chars = "0123456789abcdef";
-	int i = 0;
-
-	while (n != 0)
-	{
-		hex[i] = hex_chars[n % 16];
-		n /= 16;
-		i++;
-	}
-
-	while (i > 0)
-	{
-		i--;
-		_putchar(hex[i]); /* Print each hexadecimal digit */
-		len++;
-	}
-
-	return len;
+	return (print_hex_l((unsigned long int)addr) + 2); /* +2 for 0x */
 }
