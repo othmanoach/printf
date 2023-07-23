@@ -16,7 +16,7 @@ int helper_func(char specifier, va_list input)
 	else if (specifier == 'c')
 		len += _putchar(va_arg(input, int));
 	else if (specifier == 's')
-		len += _puts(va_arg(input, char *));
+		len += va_arg(input, char *) ? _puts(va_arg(input, char *)) : _puts("(null)");
 	else if (specifier == 'd' || specifier == 'i')
 		len += print_int(va_arg(input, int));
 	else if (specifier == 'u')
