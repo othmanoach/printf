@@ -19,26 +19,7 @@ int helper_func(char specifier, va_list input)
 	else if (specifier == 's')
 		len += _puts(va_arg(input, char *));
 	else if (specifier == 'd' || specifier == 'i')
-	{
 		len += print_int(va_arg(input, int));
-		int plus_flag = 0;
-		if (num >= 0)
-		{
-			if (specifier == '+')
-			{
-				len += _putchar('+');
-				plus_flag = 1;
-			}
-			else if (specifier == ' ')
-			{
-				len += _putchar(' ');
-				plus_flag = 1;
-			}
-		}
-
-		if (!plus_flag)
-		len += print_int(num);
-}
 	else if (specifier == 'u')
 		len += print_unsigned_int(va_arg(input, unsigned int));
 	else if (specifier == 'o')
