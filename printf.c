@@ -32,6 +32,8 @@ int helper_func(char specifier, va_list input)
 		len += print_mem_address(va_arg(input, void *));
 	else if (specifier == 'b')
 		len += print_bin(va_arg(input, unsigned int));
+	else if (specifier == 'S')
+		len += print_unprintable(va_arg(input, char *));
 	else
 	{
 		len += _putchar('%'); /* print the '%' character itself */
