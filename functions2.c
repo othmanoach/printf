@@ -66,6 +66,11 @@ int print_octal(unsigned int n)
 	char octal[12]; /* Maximum octal digits for unsigned int (4294967295) */
 	int i = 0;
 
+	if (n == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
 	while (n != 0)
 	{
 		octal[i] = (n % 8) + '0';
