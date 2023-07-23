@@ -88,6 +88,9 @@ int print_mem_address(va_list args)
 	unsigned long int address = va_arg(args, unsigned long int);
 	int len = 0;
 
+	if (!address)
+		return (_puts("(nil)") - 1);
+	
 	len += _puts("0x");
 	len += print_HEX(address);
 
