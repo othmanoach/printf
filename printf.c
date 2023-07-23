@@ -10,7 +10,6 @@
  */
 int helper_func(char specifier, va_list input)
 {
-
 	int len = 0;
 	unsigned int num;
 
@@ -28,7 +27,7 @@ int helper_func(char specifier, va_list input)
 	}
 	else if (specifier == 'd' || specifier == 'i')
 	{
-	len += print_int(va_arg(input, int)); /* if format is %d or %i print int */
+		len += print_int(va_arg(input, int)); /* if format is %d or %i print int */
 	}
 	else if (specifier == 'u')
 	{
