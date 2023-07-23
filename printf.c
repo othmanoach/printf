@@ -12,13 +12,13 @@ int helper_func(char specifier, va_list input)
 	int len = 0;
 
 	if (specifier == '%')
-		len += _putchar('%'); 
+		len += _putchar('%');
 	else if (specifier == 'c')
-		len += _putchar(va_arg(input, int)); 
+		len += _putchar(va_arg(input, int));
 	else if (specifier == 's')
-		len += _puts(va_arg(input, char *)); 
+		len += _puts(va_arg(input, char *));
 	else if (specifier == 'd' || specifier == 'i')
-		len += print_int(va_arg(input, int)); 
+		len += print_int(va_arg(input, int));
 	else if (specifier == 'u')
 		len += print_unsigned_int(va_arg(input, unsigned int));
 	else if (specifier == 'o')
