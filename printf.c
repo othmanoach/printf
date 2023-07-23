@@ -2,12 +2,12 @@
 #include <stdarg.h>
 #include <stddef.h>
 /**
- * get_specifier - helper function for _printf
+ * helper_func - helper function for _printf
  * @specifier: format specifier
  * @input: input list
  * Return: number of characters printed
  */
-int get_specifier(char specifier, va_list input)
+int helper_func(char specifier, va_list input)
 {
 	int len = 0;
 
@@ -62,7 +62,7 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			len += get_specifier(format[i], input);
+			len += helper_func(format[i], input);
 		}
 		else
 		{
