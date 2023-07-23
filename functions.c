@@ -25,7 +25,9 @@ int _putchar(char c)
 int _puts(char *str)
 {
 	int strLen = 0;
-
+	
+	if (!str)
+		str = "(null)";
 	while (*str)
 	{
 		_putchar(*str++);
