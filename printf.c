@@ -12,6 +12,7 @@ int helper_func(char specifier, va_list input)
 {
 	int len = 0;
 	unsigned int num;
+	char *str;
 
 	if (specifier == '%')
 	{
@@ -47,6 +48,11 @@ int helper_func(char specifier, va_list input)
 	else if (specifier == 'p')
 	{
 		len += print_address(input); /* Handle %p directly within _printf */	
+	}
+	else if (specifier == 'S')
+	{
+		str = va_arg(input, char *);
+		len += print_S(str); /* Handle %S to print strings with non-printable characters */
 	}
 	else if (specifier == 'b')
 	{
