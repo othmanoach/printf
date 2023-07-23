@@ -90,9 +90,38 @@ int print_mem_address(va_list args)
 
 	if (!address)
 		return (_puts("(nil)") - 1);
-	
+
 	len += _puts("0x");
-	len += print_HEX(address);
+	len += print_hex_l(address);
 
 	return (len);
+}
+/**
+ * print_hex_l - convert decimal to hexadecimal with lowercase
+ * @n: The unsigned long int to print
+ * Return: The number of characters printed
+ */
+int print_hex_l(unsigned long int n)
+{
+int len = 0;
+	char hex[12]; /* Maximum hexadecimal digits for unsigned int (4294967295) */
+	char *hex_chars = "0123456789abcdef";
+	int i = 0;
+
+	while (n != 0)
+	{
+		hex[i] = hex_chars[n % 16];
+		n /= 16;
+		i++;
+	}
+
+	while (i > 0)
+	{
+		i--;
+		_putchar(hex[i]);
+		len++;
+	}
+
+	return (len);
+
 }

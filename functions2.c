@@ -9,20 +9,17 @@
  * @n: The number to be printed
  * Return: The number of characters printed
  */
-int print_HEX(unsigned long int n)
+int print_HEX(unsigned int n)
 {
 	int len = 0;
-	char hex_digit;
 
-	if (n == 0)
-		return (0);
-
-	len += print_HEX(n / 16);
-
-	hex_digit = (n % 16 < 10) ? (n % 16 + '0') : (n % 16 - 10 + 'a');
-	_putchar(hex_digit);
-
-	return (1 + len);
+	if (n > 15)
+		len += print_HEX(n / 16);
+	if (n % 16 < 10)
+		len += _putchar(n % 16 + '0');
+	else
+		len += _putchar(n % 16 - 10 + 'A');
+	return (len);
 }
 /**
  * print_unsigned_int - prints an unsigned integer
@@ -47,27 +44,16 @@ int print_unsigned_int(unsigned int n)
  * @uppercase: Whether to use uppercase letters (X) or lowercase (x)
  * Return: The number of characters printed
  */
-int print_hex(unsigned int n, int uppercase)
+int print_hex(unsigned int n)
 {
 	int len = 0;
-	char hex[12]; /* Maximum hexadecimal digits for unsigned int (4294967295) */
-	char *hex_chars = uppercase ? "0123456789ABCDEF" : "0123456789abcdef";
-	int i = 0;
 
-	while (n != 0)
-	{
-		hex[i] = hex_chars[n % 16];
-		n /= 16;
-		i++;
-	}
-
-	while (i > 0)
-	{
-		i--;
-		_putchar(hex[i]);
-		len++;
-	}
-
+	if (n > 15)
+		len += print_hex(n / 16);
+	if (n % 16 < 10)
+		len += _putchar(n % 16 + '0');
+	else
+		len += _putchar(n % 16 - 10 + 'a');
 	return (len);
 }
 /**

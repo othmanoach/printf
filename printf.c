@@ -25,9 +25,12 @@ int helper_func(char specifier, va_list input)
 	else if (specifier == 'o')
 		len += print_octal(va_arg(input, unsigned int));
 		/* Handle %o directly within _printf */
-	else if (specifier == 'x' || specifier == 'X')
-		len += print_hex(va_arg(input, unsigned int), specifier == 'X');
-		/* Handle %x or %X directly within _printf */
+	else if (specifier == 'x')
+		len += print_hex(va_arg(input, unsigned int));
+		/* Handle %x directly within _printf */
+	else if (specifier == 'X')
+		len += print_HEX(va_arg(input, unsigned int));
+		/* Handle %X directly within _printf */
 	else if (specifier == 'p')
 		len += print_mem_address(input); /* Handle %p directly within _printf */
 	else if (specifier == 'b')
