@@ -10,7 +10,6 @@
 int get_specifier(char specifier, va_list input)
 {
 	int len = 0;
-	unsigned int num;
 
 	if (specifier == '%')
 		len += _putchar('%'); /* if format is %% print % */
