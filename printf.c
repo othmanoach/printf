@@ -32,7 +32,7 @@ int helper_func(char specifier, va_list input)
 		len += print_HEX(va_arg(input, unsigned int));
 		/* Handle %X directly within _printf */
 	else if (specifier == 'p')
-		len += print_mem_address(input); /* Handle %p directly within _printf */
+		len += print_mem_address(va_arg(input, void *)); /* Handle %p directly within _printf */
 	else if (specifier == 'b')
 		len += print_bin(va_arg(input, unsigned int));
 		/* if format is %b print binary */

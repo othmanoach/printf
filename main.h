@@ -20,7 +20,7 @@ int print_HEX(unsigned int n);
 int print_hex(unsigned int n);
 int print_unpritable(char *str);
 int print_hex_l(unsigned long int n);
-int print_mem_address(va_list adress);
+int print_mem_address(void *addr);
 int print_rev(char *s);
 int rot13(char *s);
 
