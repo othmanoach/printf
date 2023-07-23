@@ -14,7 +14,6 @@ int _puts(char *s);
 int print_int(int n);
 int print_bin(unsigned int n);
 int print_unsigned_int(unsigned int n);
-int print_unsigned(unsigned int n);
 int print_octal(unsigned int n);
 int print_HEX(unsigned int n);
 int print_hex(unsigned int n);
