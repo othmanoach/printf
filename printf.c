@@ -24,6 +24,10 @@ int helper_func(char specifier, va_list input)
 	{
 		len += _puts(va_arg(input, char *)); /* if format is %s print string */
 	}
+	else if (specifier == 'd' || specifier == 'i')
+	{
+		len += print_int(va_arg(input, int)); /* if format is %d or %i print int */
+	}
 	else
 	{
 		len += _putchar('%'); /* print the '%' character itself */
