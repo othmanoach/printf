@@ -64,3 +64,36 @@ int print_unprintable(char *str)
 	}
 	return (len);
 }
+/**
+ * rot13 - encodes a string using rot13
+ * @s: string to encode
+ * Return: pointer to encoded string
+ */
+int rot13(char *s)
+{
+	int i = 0, j = 0, len = 0;
+	char *alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char *rot13 = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+	while (s[i])
+	{
+		j = 0;
+		while (alpha[j])
+		{
+			if (s[i] == alpha[j])
+			{
+				_putchar(rot13[j]);
+				len++;
+				break;
+			}
+			j++;
+		}
+		if (!alpha[j])
+		{
+			_putchar(s[i]);
+			len++;
+		}
+		i++;
+	}
+	return (len);
+}
