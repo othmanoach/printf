@@ -83,7 +83,7 @@ int print_bin(unsigned int n)
  * @args: The va_list containing the address to be printed
  * Return: The number of characters printed
  */
-int print_address(va_list args)
+int print_mem_address(va_list args)
 {
 	unsigned long int address = va_arg(args, unsigned long int);
 	int len = 0;
