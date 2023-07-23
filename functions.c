@@ -79,7 +79,7 @@ int print_bin(unsigned int n)
 	return (count);
 }
 /**
- * print_address - Prints an address in hexadecimal format
+ * print_mem_address - Prints an address in hexadecimal format
  * @args: The va_list containing the address to be printed
  * Return: The number of characters printed
  */
