@@ -32,3 +32,36 @@ int print_hex_l(unsigned long int n)
 
 	return (len);
 }
+/**
+ * print_unprintable - prints unprintable characters
+ * @str: string to print
+ * Return: number of characters printed
+ */
+int print_unprintable(char *str)
+{
+	int i = 0, len = 0;
+	char hex[3];
+
+	while (str[i])
+	{
+		if (str[i] < 32 || str[i] >= 127)
+		{
+			_putchar('\\');
+			_putchar('x');
+			if (str[i] < 16)
+			{
+				_putchar('0');
+				len++;
+			}
+			len += 2;
+			len += print_hex_l(str[i]);
+		}
+		else
+		{
+			_putchar(str[i]);
+			len++;
+		}
+		i++;
+	}
+	return (len);
+}
