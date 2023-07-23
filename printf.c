@@ -12,31 +12,26 @@ int helper_func(char specifier, va_list input)
 	int len = 0;
 
 	if (specifier == '%')
-		len += _putchar('%'); /* if format is %% print % */
+		len += _putchar('%'); 
 	else if (specifier == 'c')
-		len += _putchar(va_arg(input, int)); /* if format is %c print char */
+		len += _putchar(va_arg(input, int)); 
 	else if (specifier == 's')
-		len += _puts(va_arg(input, char *)); /* if format is %s print string */
+		len += _puts(va_arg(input, char *)); 
 	else if (specifier == 'd' || specifier == 'i')
-		len += print_int(va_arg(input, int)); /* if format is %d or %i print int */
+		len += print_int(va_arg(input, int)); 
 	else if (specifier == 'u')
 		len += print_unsigned_int(va_arg(input, unsigned int));
-		/* Handle %u directly within _printf */
 	else if (specifier == 'o')
 		len += print_octal(va_arg(input, unsigned int));
-		/* Handle %o directly within _printf */
 	else if (specifier == 'x')
 		len += print_hex(va_arg(input, unsigned int));
-		/* Handle %x directly within _printf */
 	else if (specifier == 'X')
 		len += print_HEX(va_arg(input, unsigned int));
-		/* Handle %X directly within _printf */
+
 	else if (specifier == 'p')
 		len += print_mem_address(va_arg(input, void *));
-		/* Handle %p directly within _printf */
 	else if (specifier == 'b')
 		len += print_bin(va_arg(input, unsigned int));
-		/* if format is %b print binary */
 	else
 	{
 		len += _putchar('%'); /* print the '%' character itself */
