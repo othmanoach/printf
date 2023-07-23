@@ -34,7 +34,7 @@ int helper_func(char specifier, va_list input)
 		len += _putchar(specifier); /* print the unrecognized format specifier */
 	}
 
-	return len;
+	return (len);
 }
 
 /**
