@@ -28,6 +28,10 @@ int helper_func(char specifier, va_list input)
 	{
 		len += print_int(va_arg(input, int)); /* if format is %d or %i print int */
 	}
+	else if (specifier == 'b')
+	{
+		len += print_bin(va_arg(input, unsigned int)); /* if format is %b print binary */
+	}
 	else
 	{
 		len += _putchar('%'); /* print the '%' character itself */
