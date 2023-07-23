@@ -29,6 +29,11 @@ int helper_func(char specifier, va_list input)
 	{
 	len += print_int(va_arg(input, int)); /* if format is %d or %i print int */
 	}
+	else if (specifier == 'u')
+	{
+		num = va_arg(input, unsigned int);
+		len += print_unsigned(num); /* Handle %u directly within _printf */
+	}
 	else if (specifier == 'o')
 	{
 		num = va_arg(input, unsigned int);
