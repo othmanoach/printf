@@ -85,13 +85,13 @@ int print_bin(unsigned int n)
  */
 int print_mem_address(void *addr)
 {
-    if (!addr)
-    {
-        return _puts("(nil)"); 
-    }
+	if (!addr)
+	{
+		return _puts("(nil)");
+	}
 
-    _puts("0x");
-    return print_hex_l((unsigned long int)addr) + 2; /* +2 for 0x */
+	_puts("0x");
+	return print_hex_l((unsigned long int)addr) + 2; /* +2 for 0x */
 }
 /**
  * print_hex_l - convert decimal to hexadecimal with lowercase
@@ -100,24 +100,24 @@ int print_mem_address(void *addr)
  */
 int print_hex_l(unsigned long int n)
 {
-    int len = 0;
-    char hex[17]; /* Maximum hexadecimal digits for unsigned long int */
-    char *hex_chars = "0123456789abcdef";
-    int i = 0;
+	int len = 0;
+	char hex[17]; /* Maximum hexadecimal digits for unsigned long int */
+	char *hex_chars = "0123456789abcdef";
+	int i = 0;
 
-    while (n != 0)
-    {
-        hex[i] = hex_chars[n % 16];
-        n /= 16;
-        i++;
-    }
+	while (n != 0)
+	{
+		hex[i] = hex_chars[n % 16];
+		n /= 16;
+		i++;
+	}
 
-    while (i > 0)
-    {
-        i--;
-        _putchar(hex[i]); /* Print each hexadecimal digit */
-        len++;
-    }
+	while (i > 0)
+	{
+		i--;
+		_putchar(hex[i]); /* Print each hexadecimal digit */
+		len++;
+	}
 
-    return len;
+	return len;
 }
