@@ -1,8 +1,10 @@
 #include "main.h"
+#include <stdarg.h>
+#include <stddef.h>
 
 /**
  * helper_func - helper function for _printf
- * @format: format specifier
+ * @specifier: format specifier
  * @input: input list
  * Return: number of characters printed
  */
@@ -22,8 +24,19 @@ int helper_func(char specifier, va_list input)
 	{
 		len += _puts(va_arg(input, char *)); /* if format is %s print string */
 	}
+	else if (specifier == 'd' || specifier == 'i')
+	{
+		len += print_int(va_arg(input, int)); /* if format is %d or %i print int */
+	}
+	else
+	{
+		len += _putchar('%'); /* print the '%' character itself */
+		len += _putchar(specifier); /* print the unrecognized format specifier */
+	}
+
 	return (len);
 }
+
 /**
  * _printf - prints anything
  * @format: list of argument types passed to the function
@@ -33,7 +46,6 @@ int _printf(const char *format, ...)
 {
 	int i = 0, len = 0;
 	va_list input;
-
 
 	if (!format || (format[0] == '%' && !format[1]))
 		return (-1); /* if format is null or if format is % return -1 */
@@ -47,7 +59,7 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			len =+ helper_func(format[i], input);
+			len += helper_func(format[i], input);
 		}
 		else
 		{
@@ -55,6 +67,7 @@ int _printf(const char *format, ...)
 		}
 		i++;
 	}
+
 	va_end(input);
 	return (len);
 }
