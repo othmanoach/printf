@@ -17,7 +17,8 @@ int print_octal(unsigned int n);
 int print_hex(unsigned int n, int uppercase);
 int print_unpritable(char *str);
 int print_hex_l(unsigned long int n);
-int print_mem_address(void *ptr);
+int print_address(va_list args);
+int print_HEX(unsigned long int n);
 int print_rev(char *s);
 int rot13(char *s);
 

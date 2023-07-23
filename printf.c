@@ -44,6 +44,10 @@ int helper_func(char specifier, va_list input)
 		num = va_arg(input, unsigned int);
 		len += print_hex(num, specifier == 'X'); /* Handle %x or %X directly within _printf */
 	}
+	else if (specifier == 'p')
+	{
+		len += print_address(input); /* Handle %p directly within _printf */	
+	}
 	else if (specifier == 'b')
 	{
 		len += print_bin(va_arg(input, unsigned int)); /* if format is %b print binary */
