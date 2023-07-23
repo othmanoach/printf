@@ -14,24 +14,24 @@ int helper_func(char specifier, va_list input)
 
 	if (specifier == '%')
 	{
-		len += _putchar('%');
+		len += _putchar('%'); /* if format is %% print % */
 	}
 	else if (specifier == 'c')
 	{
-		len += _putchar(va_arg(input, int));
+		len += _putchar(va_arg(input, int)); /* if format is %c print char */
 	}
 	else if (specifier == 's')
 	{
-		len += _puts(va_arg(input, char *));
+		len += _puts(va_arg(input, char *)); /* if format is %s print string */
 	}
 	else if (specifier == 'd' || specifier == 'i')
 	{
-		len += print_int(va_arg(input, int));
+		len += print_int(va_arg(input, int)); /* if format is %d or %i print int */
 	}
 	else
 	{
-		len += _putchar('%');
-		len += _putchar(specifier);
+		len += _putchar('%'); /* print the '%' character itself */
+		len += _putchar(specifier); /* print the unrecognized format specifier */
 	}
 
 	return (len);
@@ -48,9 +48,9 @@ int _printf(const char *format, ...)
 	va_list input;
 
 	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
+		return (-1); /* if format is null or if format is % return -1 */
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
+		return (-1); /* if format is % return -1 */
 
 	va_start(input, format);
 
@@ -63,7 +63,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			len += _putchar(format[i]);
+			len += _putchar(format[i]); /* if format is not % print char */
 		}
 		i++;
 	}
