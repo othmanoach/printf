@@ -3,23 +3,24 @@
 #include <stddef.h>
 
 /**
- * helper_func - helper function for _printf
- * @specifier: format specifier
- * @input: input list
- * Return: number of characters printed
+ * helper_func - Helper function for _printf
+ * @specifier: Format specifier
+ * @input: Input list
+ * @flag_plus: Flag for the '+' character
+ * @flag_space: Flag for the ' ' character
+ *
+ * Return: Number of characters printed
  */
-int helper_func(char specifier, va_list input)
+int helper_func(char specifier, va_list input, int flag_plus, int flag_space)
 {
-	int len = 0;
-	int flag_plus = 0;
-	int flag_space = 0;
-	
-	if (specifier == '%')
-		len += _putchar('%');
-	else if (specifier == 'c')
-		len += _putchar(va_arg(input, int));
-	else if (specifier == 's')
-		len += _puts(va_arg(input, char *));
+    int len = 0;
+
+    if (specifier == '%')
+        len += _putchar('%');
+    else if (specifier == 'c')
+        len += _putchar(va_arg(input, int));
+    else if (specifier == 's')
+        len += _puts(va_arg(input, char *));
     else if (specifier == 'd' || specifier == 'i')
     {
         int num = va_arg(input, int);
@@ -30,62 +31,78 @@ int helper_func(char specifier, va_list input)
         else
             len += print_int(num);
     }
-	else if (specifier == 'u')
-		len += print_unsigned_int(va_arg(input, unsigned int));
-	else if (specifier == 'o')
-		len += print_octal(va_arg(input, unsigned int));
-	else if (specifier == 'x')
-		len += print_hex(va_arg(input, unsigned int));
-	else if (specifier == 'X')
-		len += print_HEX(va_arg(input, unsigned int));
-	else if (specifier == 'p')
-		len += print_mem_address(va_arg(input, void *));
-	else if (specifier == 'b')
-		len += print_bin(va_arg(input, unsigned int));
-	else if (specifier == 'S')
-		len += print_unprintable(va_arg(input, char *));
-	else if (specifier == 'R')
-		len += rot13(va_arg(input, char *));
-	else if (specifier == 'r')
-		len += print_rev(va_arg(input, char *));
-	else
-	{
-		len += _putchar('%'); /* print the '%' character itself */
-		len += _putchar(specifier); /* print the unrecognized format specifier */
-	}
-	return (len);
+    else if (specifier == 'u')
+        len += print_unsigned_int(va_arg(input, unsigned int));
+    else if (specifier == 'o')
+        len += print_octal(va_arg(input, unsigned int));
+    else if (specifier == 'x')
+        len += print_hex(va_arg(input, unsigned int));
+    else if (specifier == 'X')
+        len += print_HEX(va_arg(input, unsigned int));
+    else if (specifier == 'p')
+        len += print_mem_address(va_arg(input, void *));
+    else if (specifier == 'b')
+        len += print_bin(va_arg(input, unsigned int));
+    else if (specifier == 'S')
+        len += print_unprintable(va_arg(input, char *));
+    else if (specifier == 'R')
+        len += rot13(va_arg(input, char *));
+    else if (specifier == 'r')
+        len += print_rev(va_arg(input, char *));
+    else
+    {
+        len += _putchar('%'); /* Print the '%' character itself */
+        len += _putchar(specifier); /* Print the unrecognized format specifier */
+    }
+
+    return (len);
 }
+
 /**
- * _printf - prints anything
- * @format: list of argument types passed to the function
- * Return: number of characters printed
+ * _printf - Prints anything with custom format specifiers
+ * @format: List of argument types passed to the function
+ * Return: Number of characters printed
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, len = 0;
-	va_list input;
+    int i = 0, len = 0;
+    va_list input;
+    int flag_plus = 0;
+    int flag_space = 0;
 
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1); /* if format is null or if format is % return -1 */
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1); /* if format is % return -1 */
+    if (!format || (format[0] == '%' && !format[1]))
+        return (-1);
+    if (format[0] == '%' && format[1] == ' ' && !format[2])
+        return (-1);
 
-	va_start(input, format);
+    va_start(input, format);
 
-	while (format && format[i])
-	{
-		if (format[i] == '%')
-		{
-			i++;
-			len += helper_func(format[i], input);
-		}
-		else
-		{
-			len += _putchar(format[i]); /* if format is not % print char */
-		}
-		i++;
-	}
+    while (format && format[i])
+    {
+        if (format[i] == '%')
+        {
+            i++;
 
-	va_end(input);
-	return (len);
+            flag_plus = 0;
+            flag_space = 0;
+            while (format[i] == '+' || format[i] == ' ')
+            {
+                if (format[i] == '+')
+                    flag_plus = 1;
+                else if (format[i] == ' ')
+                    flag_space = 1;
+                i++;
+            }
+
+            len += helper_func(format[i], input, flag_plus, flag_space);
+        }
+        else
+        {
+            len += _putchar(format[i]);
+        }
+        i++;
+    }
+
+    va_end(input);
+    return (len);
 }
