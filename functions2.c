@@ -101,7 +101,6 @@ int print_plus_int(int num)
     len += print_int(num);
     return (len);
 }
-
 /**
  * print_space_int - Helper function to print integer with space flag
  * @num: Integer to print
@@ -116,7 +115,6 @@ int print_space_int(int num)
     len += print_int(num);
     return (len);
 }
-
 /**
  * print_plus_unsigned_int - Helper function to print unsigned integer with '+' flag
  * @num: Unsigned integer to print
@@ -130,7 +128,6 @@ int print_plus_unsigned_int(unsigned int num)
     len += print_unsigned_int(num);
     return (len);
 }
-
 /**
  * print_space_unsigned_int - Helper function to print unsigned integer with space flag
  * @num: Unsigned integer to print
