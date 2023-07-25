@@ -28,16 +28,16 @@ int helper_func(char specifier, va_list input, int flag_plus
 	else if (specifier == 'u')
 		{flag_plus ? len += print_plus_unsigned_int(va_arg(input, unsigned int)) : 0;
 		flag_space ? len += print_space_unsigned_int(va_arg(input, unsigned int)) : 0;
-		len += print_unsigned_int(va_arg(input, unsigned int)); }
+	 (!flag_plus && !flag_space) ? print_unsigned_int(va_arg(input, unsigned int)):0; }
 	else if (specifier == 'o')
 		{flag_hash ? len += _putchar('0') : 0;
-		len += print_octal(va_arg(input, unsigned int)); }
+		!flag_hash ? print_octal(va_arg(input, unsigned int)):0; }
 	else if (specifier == 'x')
 		{flag_hash ? len += _puts("0x") : 0;
-		len += print_hex(va_arg(input, unsigned int)); }
+		!flag_hash ? print_hex(va_arg(input, unsigned int)):0; }
 	else if (specifier == 'X')
 		{flag_hash ? len += _puts("0X") : 0;
-		len += print_HEX(va_arg(input, unsigned int)); }
+		!flag_hash ? print_HEX(va_arg(input, unsigned int)):0; }
 	else if (specifier == 'p')
 		len += print_mem_address(va_arg(input, void *));
 	else if (specifier == 'b')
