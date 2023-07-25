@@ -28,40 +28,14 @@ int helper_func(char specifier, va_list input)
         else
             len += print_int(num);
     }
-    else if (specifier == 'u')
-    {
-        unsigned int num = va_arg(input, unsigned int);
-        if (flag_plus)
-            len += print_plus_unsigned_int(num);
-        else if (flag_space)
-            len += print_space_unsigned_int(num);
-        else
-            len += print_unsigned_int(num);
-    }
-    else if (specifier == 'o')
-    {
-        unsigned int num = va_arg(input, unsigned int);
-        if (flag_hash)
-            len += print_hash_octal(num);
-        else
-            len += print_octal(num);
-    }
-    else if (specifier == 'x')
-    {
-        unsigned int num = va_arg(input, unsigned int);
-        if (flag_hash)
-            len += print_hash_hex(num, 0);
-        else
-            len += print_hex(num, 0);
-    }
-    else if (specifier == 'X')
-    {
-        unsigned int num = va_arg(input, unsigned int);
-        if (flag_hash)
-            len += print_hash_hex(num, 1);
-        else
-            len += print_HEX(num);
-    }
+	else if (specifier == 'u')
+		len += print_unsigned_int(va_arg(input, unsigned int));
+	else if (specifier == 'o')
+		len += print_octal(va_arg(input, unsigned int));
+	else if (specifier == 'x')
+		len += print_hex(va_arg(input, unsigned int));
+	else if (specifier == 'X')
+		len += print_HEX(va_arg(input, unsigned int));
 	else if (specifier == 'p')
 		len += print_mem_address(va_arg(input, void *));
 	else if (specifier == 'b')
