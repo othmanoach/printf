@@ -22,13 +22,12 @@ int helper_func(char specifier, va_list input, int flag_plus
 	else if (specifier == 's')
 		len += _puts(va_arg(input, char *));
 	else if (specifier == 'd' || specifier == 'i')
-		{flag_plus ? len += print_plus_int(va_arg(input, int)) : 0;
-		flag_space ? len += print_space_int(va_arg(input, int)) : 0;
-		len += print_int(va_arg(input, int)); }
+	{flag_plus ? len += print_plus_int(va_arg(input, int)) :0;
+	flag_space ? len += print_space_int(va_arg(input, int)):0;
+	(!flag_plus && !flag_space) ? print_int(va_arg(input, int)):0;}
 	else if (specifier == 'u')
 		{flag_plus ? len += print_plus_unsigned_int(va_arg(input, unsigned int)) : 0;
-		flag_space ? len += print_space_unsigned_int
-		(va_arg(input, unsigned int)) : 0;
+		flag_space ? len += print_space_unsigned_int(va_arg(input, unsigned int)) : 0;
 		len += print_unsigned_int(va_arg(input, unsigned int)); }
 	else if (specifier == 'o')
 		{flag_hash ? len += _putchar('0') : 0;
