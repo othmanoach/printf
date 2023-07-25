@@ -11,7 +11,9 @@
 int helper_func(char specifier, va_list input)
 {
 	int len = 0;
-
+	int flag_plus = 0;
+	int flag_space = 0;
+	
 	if (specifier == '%')
 		len += _putchar('%');
 	else if (specifier == 'c')
