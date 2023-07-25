@@ -144,33 +144,3 @@ int print_space_unsigned_int(unsigned int num)
     len += print_unsigned_int(num);
     return (len);
 }
-
-/**
- * print_hash_octal - Helper function to print octal with '#' flag
- * @num: Unsigned integer to print
- * Return: Number of characters printed
- */
-int print_hash_octal(unsigned int num)
-{
-    int len = 0;
-
-    len += _putchar('0');
-    len += print_octal(num);
-    return (len);
-}
-
-/**
- * print_hash_hex - Helper function to print hexadecimal with '#' flag
- * @num: Unsigned integer to print
- * @uppercase: Whether to print in uppercase (1) or lowercase (0)
- * Return: Number of characters printed
- */
-int print_hash_hex(unsigned int num, int uppercase)
-{
-    int len = 0;
-
-    len += _putchar('0');
-    len += _putchar(uppercase ? 'X' : 'x');
-    len += print_hex(num, uppercase);
-    return (len);
-}
