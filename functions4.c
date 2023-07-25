@@ -1,3 +1,4 @@
+#include "main.h"
 /**
  * print_plus_int - Helper function to print integer with '+' flag
  * @n: Integer to print

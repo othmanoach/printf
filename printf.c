@@ -22,23 +22,23 @@ int helper_func(char specifier, va_list input, int flag_plus
 	else if (specifier == 's')
 		len += _puts(va_arg(input, char *));
 	else if (specifier == 'd' || specifier == 'i')
-		flag_plus ? len += print_plus_int(va_arg(input, int)) : 0;
+		{flag_plus ? len += print_plus_int(va_arg(input, int)) : 0;
 		flag_space ? len += print_space_int(va_arg(input, int)) : 0;
-		len += print_int(num);
+		len += print_int(va_arg(input, int)); }
 	else if (specifier == 'u')
-		flag_plus ? len += print_plus_unsigned_int(va_arg(input, unsigned int)) : 0;
+		{flag_plus ? len += print_plus_unsigned_int(va_arg(input, unsigned int)) : 0;
 		flag_space ? len += print_space_unsigned_int
 		(va_arg(input, unsigned int)) : 0;
-		len += print_unsigned_int(unum);
+		len += print_unsigned_int(va_arg(input, unsigned int)); }
 	else if (specifier == 'o')
-		flag_hash ? len += _putchar('0') : 0;
-		len += print_octal(va_arg(input, unsigned int));
+		{flag_hash ? len += _putchar('0') : 0;
+		len += print_octal(va_arg(input, unsigned int)); }
 	else if (specifier == 'x')
-		flag_hash ? len += _puts("0x") : 0;
-		len += print_hex(va_arg(input, unsigned int));
+		{flag_hash ? len += _puts("0x") : 0;
+		len += print_hex(va_arg(input, unsigned int)); }
 	else if (specifier == 'X')
-		flag_hash ? len += _puts("0X") : 0;
-		len += print_HEX(va_arg(input, unsigned int));
+		{flag_hash ? len += _puts("0X") : 0;
+		len += print_HEX(va_arg(input, unsigned int)); }
 	else if (specifier == 'p')
 		len += print_mem_address(va_arg(input, void *));
 	else if (specifier == 'b')
@@ -50,8 +50,8 @@ int helper_func(char specifier, va_list input, int flag_plus
 	else if (specifier == 'r')
 		len += print_rev(va_arg(input, char *));
 	else
-		len += _putchar('%'); /* print the '%' character itself */
-		len += _putchar(specifier); /* print the unrecognized format specifier */
+		{len += _putchar('%'); /* print the '%' character itself */
+		len += _putchar(specifier); /* print the unrecognized format specifier */}
 	return (len);
 }
 
