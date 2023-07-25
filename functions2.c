@@ -38,6 +38,35 @@ int print_unsigned_int(unsigned int n)
 
 	return (len);
 }
+int print_octal(unsigned int n)
+{
+    char octal[12]; /* Maximum octal digits for unsigned int (4294967295) */
+    int len = 0;
+    int i = 0;
+
+    if (n == 0)
+    {
+        _putchar('0');
+        return (1);
+    }
+
+    while (n != 0)
+    {
+        octal[i] = (n % 8) + '0';
+        n /= 8;
+        i++;
+    }
+
+    while (i > 0)
+    {
+        i--;
+        _putchar(octal[i]);
+        len++;
+    }
+
+    return (len);
+}
+
 /**
  * print_hex - prints an unsigned integer in hexadecimal format
  * @n: The unsigned integer to print
@@ -45,47 +74,35 @@ int print_unsigned_int(unsigned int n)
  */
 int print_hex(unsigned int n)
 {
-	int len = 0;
+    char hex[12]; /* Maximum hexadecimal digits for unsigned int (4294967295) */
+    int len = 0;
+    int i = 0;
 
-	if (n > 15)
-		len += print_hex(n / 16);
-	if (n % 16 < 10)
-		len += _putchar(n % 16 + '0');
-	else
-		len += _putchar(n % 16 - 10 + 'a');
-	return (len);
-}
-/**
- * print_octal - prints an unsigned integer in octal format
- * @n: The unsigned integer to print
- * Return: The number of characters printed
- */
-int print_octal(unsigned int n)
-{
-	int len = 0;
-	char octal[12]; /* Maximum octal digits for unsigned int (4294967295) */
-	int i = 0;
+    if (n == 0)
+    {
+        _putchar('0');
+        return (1);
+    }
 
-	if (n == 0)
-	{
-		_putchar('0');
-		return (1);
-	}
-	while (n != 0)
-	{
-		octal[i] = (n % 8) + '0';
-		n /= 8;
-		i++;
-	}
+    while (n != 0)
+    {
+        int remainder = n % 16;
+        if (remainder < 10)
+            hex[i] = remainder + '0';
+        else
+            hex[i] = remainder - 10 + 'a';
+        n /= 16;
+        i++;
+    }
 
-	while (i > 0)
-	{
-		i--;
-		_putchar(octal[i]);
-		len++;
-	}
+    while (i > 0)
+    {
+        i--;
+        _putchar(hex[i]);
+        len++;
+    }
 
-	return (len);
+    return (len);
 }
 /**
  * print_plus_int - Helper function to print integer with '+' flag
