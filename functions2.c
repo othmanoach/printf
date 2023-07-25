@@ -38,33 +38,38 @@ int print_unsigned_int(unsigned int n)
 
 	return (len);
 }
+/**
+ * print_octal - prints an unsigned integer in octal format
+ * @n: The unsigned integer to print
+ * Return: The number of characters printed
+ */
 int print_octal(unsigned int n)
 {
-    char octal[12]; /* Maximum octal digits for unsigned int (4294967295) */
-    int len = 0;
-    int i = 0;
+	char octal[12]; /* Maximum octal digits for unsigned int (4294967295) */
+	int len = 0;
+	int i = 0;
 
-    if (n == 0)
-    {
-        _putchar('0');
-        return (1);
-    }
+	if (n == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
 
-    while (n != 0)
-    {
-        octal[i] = (n % 8) + '0';
-        n /= 8;
-        i++;
-    }
+	while (n != 0)
+	{
+		octal[i] = (n % 8) + '0';
+		n /= 8;
+		i++;
+	}
 
-    while (i > 0)
-    {
-        i--;
-        _putchar(octal[i]);
-        len++;
-    }
+	while (i > 0)
+	{
+		i--;
+		_putchar(octal[i]);
+		len++;
+	}
 
-    return (len);
+	return (len);
 }
 
 /**
@@ -74,87 +79,34 @@ int print_octal(unsigned int n)
  */
 int print_hex(unsigned int n)
 {
-    char hex[12]; /* Maximum hexadecimal digits for unsigned int (4294967295) */
-    int len = 0;
-    int i = 0;
+	char hex[12]; /* Maximum hexadecimal digits for unsigned int (4294967295) */
+	int len = 0;
+	int i = 0;
 
-    if (n == 0)
-    {
-        _putchar('0');
-        return (1);
-    }
+	if (n == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
 
-    while (n != 0)
-    {
-        int remainder = n % 16;
-        if (remainder < 10)
-            hex[i] = remainder + '0';
-        else
-            hex[i] = remainder - 10 + 'a';
-        n /= 16;
-        i++;
-    }
+	while (n != 0)
+	{
+		int remainder = n % 16;
 
-    while (i > 0)
-    {
-        i--;
-        _putchar(hex[i]);
-        len++;
-    }
+		if (remainder < 10)
+			hex[i] = remainder + '0';
+		else
+			hex[i] = remainder - 10 + 'a';
+		n /= 16;
+		i++;
+	}
 
-    return (len);
-}
-/**
- * print_plus_int - Helper function to print integer with '+' flag
- * @n: Integer to print
- * Return: Number of characters printed
- */
-int print_plus_int(int n)
-{
-    int len = 0;
+	while (i > 0)
+	{
+		i--;
+		_putchar(hex[i]);
+		len++;
+	}
 
-    if (n >= 0)
-        len += _putchar('+');
-    len += print_int(n);
-    return (len);
-}
-/**
- * print_space_int - Helper function to print integer with space flag
- * @n: Integer to print
- * Return: Number of characters printed
- */
-int print_space_int(int n)
-{
-    int len = 0;
-
-    if (n >= 0)
-        len += _putchar(' ');
-    len += print_int(n);
-    return (len);
-}
-/**
- * print_plus_unsigned_int - Helper function to print unsigned integer with '+' flag
- * @n: Unsigned integer to print
- * Return: Number of characters printed
- */
-int print_plus_unsigned_int(unsigned int n)
-{
-    int len = 0;
-
-    len += _putchar('+');
-    len += print_unsigned_int(n);
-    return (len);
-}
-/**
- * print_space_unsigned_int - Helper function to print unsigned integer with space flag
- * @n: Unsigned integer to print
- * Return: Number of characters printed
- */
-int print_space_unsigned_int(unsigned int n)
-{
-    int len = 0;
-
-    len += _putchar(' ');
-    len += print_unsigned_int(n);
-    return (len);
+	return (len);
 }
