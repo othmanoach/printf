@@ -77,7 +77,6 @@ int helper_func(char specifier, va_list input, int flag_plus, int flag_space, in
         len += _putchar('%'); /* print the '%' character itself */
         len += _putchar(specifier); /* print the unrecognized format specifier */
     }
-
     return (len);
 }
 
@@ -104,7 +103,6 @@ int _printf(const char *format, ...)
         {
             int flag_plus = 0, flag_space = 0, flag_hash = 0;
             i++;
-
             while (format[i] == '+' || format[i] == ' ' || format[i] == '#')
             {
                 if (format[i] == '+')
@@ -116,7 +114,6 @@ int _printf(const char *format, ...)
 
                 i++;
             }
-
             len += helper_func(format[i], input, flag_plus, flag_space, flag_hash);
         }
         else
